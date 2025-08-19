@@ -20,7 +20,7 @@ function PropertyGrid() {
             : properties.filter((property: Property) => {
                 return property.location.toLowerCase().includes(searchTerm.toLowerCase());
             });
-        return filteredProperties.sort((a, b) => {
+        return filteredProperties.sort((a: { rating: number; }, b: { rating: number; }) => {
             return b.rating - a.rating;
         });
     }, [properties, searchTerm]);
