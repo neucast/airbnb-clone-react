@@ -5,7 +5,7 @@ import { usePropertiesStore } from "../../model/store";
 import { type Property } from "../../model/types";
 
 function PropertyGrid() {
-    const loadProperties = usePropertiesStore((state) => |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||state.loadProperties);
+    const loadProperties = usePropertiesStore((state) => state.loadProperties);
     const properties = usePropertiesStore((state) => state.properties);
     const loading = usePropertiesStore((state) => state.loading);
     const searchTerm = usePropertiesStore((state) => state.searchTerm);
