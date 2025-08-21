@@ -1,14 +1,13 @@
 import axios from "axios";
 import axiosRetry from "axios-retry";
 
-const API_BASE_URL = 'https://1b9cdcdb1c7b.ngrok-free.app';
+const API_BASE_URL = 'https://91c48a924bb9.ngrok-free.app';
 
 export const apiClient = axios.create({
     baseURL: API_BASE_URL,
     timeout: 10000,
     headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
         "ngrok-skip-browser-warning": "true",
     },
 });
