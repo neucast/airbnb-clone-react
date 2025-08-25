@@ -11,26 +11,16 @@ export class PropertiesApi {
             throw error;
         }
     }
-    static async searchProperties(location: string, signal?:AbortSignal): Promise<Property[]> {
+    static async searchProperties(location: string, signal?: AbortSignal): Promise<Property[]> {
         try {
-            const response = await apiClient.get(`/properties/location/${location}`,{
-                signal: signal,
-            });
+            const response = await apiClient.get(`/properties/location/${location}`,
+                {
+                    signal
+                }
+            );
             return response.data;
         } catch (error) {
             console.error('Error fetching properties:', error);
-            throw error;
-        }
-    }
-    
-    static async searchPropertyDetailsById(id: string | number, signal?: AbortSignal): Promise<Property> {
-        try {
-            const response = await apiClient.get(`/properties/${id}`, {
-                signal: signal,
-            });
-            return response.data;
-        } catch (error) {
-            console.error('Error fetching property details:', error);
             throw error;
         }
     }

@@ -9,7 +9,7 @@ function PropertyDetailsPage() {
     const properties = usePropertiesStore((state) => state.properties)
   
     const propertyId = parseInt(id || '0', 10)
-    const property = properties.find((p: { id: number }) => p.id === propertyId)
+    const property = properties.find(p => p.id === propertyId)
   
     // Mock data for enhanced Airbnb-like features
     const amenities = [

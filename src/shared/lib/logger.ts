@@ -1,11 +1,11 @@
 import loglevel from 'loglevel';
 
 class Logger {
-    private logger = loglevel.getLoggers('Logger');
-    private prefixMessage = '[' + new Date().toISOString() + ']: ';
+    private logger = loglevel.getLogger('Logger');
+    private prefixMessage = '[' + new Date().toISOString() + ']: '
 
     constructor() {
-        this.logger.setLevel('debug');
+        loglevel.setLevel('debug');
     }
 
     log(message: string) {
@@ -15,11 +15,10 @@ class Logger {
     error(message: string) {
         this.logger.error(this.prefixMessage, message);
     }
-
+    
     info(message: string) {
         this.logger.info(this.prefixMessage, message);
-    }
+    }     
 }
 
 export default Logger;
-
