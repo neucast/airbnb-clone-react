@@ -1,8 +1,7 @@
-import { useState } from 'react'
-import { useAuthContext } from '../shared/hooks/AuthContext'
+import {useAuthContext} from '../shared/hooks/AuthContext'
 
 function ProfilePage() {
-    const { user } = useAuthContext()
+    const {user, logout} = useAuthContext()
 
     if (!user) {
         return <div>Loading...</div>
@@ -22,10 +21,15 @@ function ProfilePage() {
 
         return String(value || '')
     }
-    
+
+    // const checkUserName = () => {
+    //
+    // }
+
     return (
         <div>
-            Soy la profile page: {user?.profile?.username}
+            Profile page: {user?.profile?.username}
+            <button onClick={logout}>Logout</button>
         </div>
     )
 }
