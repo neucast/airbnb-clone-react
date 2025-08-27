@@ -1,6 +1,6 @@
 const oidcConfig = {
     authority: 'https://localhost:9443/oauth2/oidcdiscovery',
-    client_id: '37CBlrbLPsP36NaheYAS7vbpde4a',
+    client_id: 'JGLSoYc02ONp8TCNOhzW7OCVLpYa',
     redirect_uri: 'http://localhost:5173/callback',
     post_logout_redirect_uri: 'http://localhost:5173',
     response_type: 'code',
