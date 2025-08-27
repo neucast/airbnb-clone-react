@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useAuthContext } from '../shared/hooks/AuthContext'
 import './ChatPage.css'
 
 interface Message {
@@ -9,20 +10,20 @@ interface Message {
 }
 
 function ChatPage() {
+    const { user } = useAuthContext();
     const [ws, setWs] = useState<WebSocket | null>(null);
     const [isConnected, setIsConnected] = useState(false);
     const [isRegistered, setIsRegistered] = useState(false);
     const [messages, setMessages] = useState<Message[]>([]);
     const [messageInput, setMessageInput] = useState('');
-    const [userId, setUserId] = useState('');
     const [roomName, setRoomName] = useState('');
     const [currentRoom, setCurrentRoom] = useState<string | null>(null);
     const messageEndRef = useRef<HTMLDivElement>(null);
 
     const connectToWebSocket = () => {
-        const userIdValue = userId.trim();
+        const userIdValue = user?.profile?.username?.trim();
         if (!userIdValue) {
-            alert('Please enter a user ID');
+            alert('Please log in to use chat');
             return;
         }
 
@@ -91,15 +92,12 @@ function ChatPage() {
         <div className="chat-container">
             <div className="chat-header">
                 <h1>Chat</h1>
+                {user?.profile?.username && (
+                    <div className="user-info">
+                        Welcome, <strong>{user.profile.username}</strong>
+                    </div>
+                )}
                 <div className="user-setup">
-                    <input 
-                        type="text" 
-                        value={userId} 
-                        onChange={(e) => setUserId(e.target.value)} 
-                        placeholder='User ID' 
-                        disabled={isConnected} 
-                        className='user-id-input' 
-                    />
                     <input 
                         type="text" 
                         value={roomName} 

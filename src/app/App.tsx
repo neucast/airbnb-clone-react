@@ -5,6 +5,7 @@ import PrivateRoute from '../shared/ui/PrivateRoute'
 import { AuthProvider } from '../shared/hooks/AuthContext'
 import AuthCallback from '../shared/ui/AuthCallback'
 import SilentCallback from '../shared/ui/SilentCallback'
+import ProtectedRoute from "../shared/ui/ProtectedRoute.tsx";
 
 const HomePage = lazy(() => import('../pages/HomePage'))
 const PropertyDetailsPage = lazy(() => import('../pages/PropertyDetailsPage'))
@@ -21,7 +22,12 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/callback" element={<AuthCallback />} />
             <Route path="/silent-callback" element={<SilentCallback />} />
-            <Route path="/chat" element={<ChatPage />} />
+            <Route path="/chat" element={
+                <ProtectedRoute>
+                    <ChatPage />
+                </ProtectedRoute>
+            }
+            />
             <Route path="/property/:id" element={<PropertyDetailsPage />} />
             <Route path="/profile" element={
               <PrivateRoute>
