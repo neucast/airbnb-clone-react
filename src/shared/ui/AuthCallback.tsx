@@ -7,10 +7,14 @@ const AuthCallback = () => {
     const auth = useAuth();
 
     useEffect(() => {
-        if (auth.isAuthenticated) {
+        if (auth.isAuthenticated && auth.user) {
+            // Save refresh token to local storage.
+            if (auth.user.refresh_token) {
+                localStorage.setItem('refresh_token', auth.user.refresh_token);
+            }
             navigate('/profile', {replace: true});
         }
-    }, [auth.isAuthenticated, navigate])
+    }, [auth.isAuthenticated, auth.user, navigate])
 
     useEffect(() => {
         if (auth.error) {
