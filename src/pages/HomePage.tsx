@@ -2,6 +2,8 @@ import {PropertyGrid, SearchBar} from "../features/properties";
 import {useAuth} from "../shared/hooks/useAuth";
 import OneSignal from "react-onesignal";
 import {useEffect} from "react";
+import RemotePropertyApp from "../shared/ui/RemotePropertyApp.tsx";
+import RemotePropertyViewerApp from "../shared/ui/RemotePropertyViewerApp.tsx";
 
 
 function HomePage() {
@@ -23,6 +25,8 @@ function HomePage() {
         <>
             <SearchBar/>
             <PropertyGrid/>
+            <RemotePropertyApp/>
+            <RemotePropertyViewerApp/>
             <div>
                 <button onClick={handleLogin}>
                     Login
