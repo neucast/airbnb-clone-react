@@ -24,7 +24,7 @@ function HomePage() {
     return (
         <>
             <SearchBar/>
-            <PropertyGrid/>
+            {/*<PropertyGrid/>*/}
             <RemotePropertyApp/>
             <RemotePropertyViewerApp/>
             <div>
