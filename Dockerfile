@@ -1,11 +1,20 @@
-FROM node:22-alpine
+FROM node:22-alpine as builder
 
 WORKDIR /app
 
-COPY package*.json .
+COPY ./package.json .
 RUN npm install
-RUN npx playwright install --with-deps
 
 COPY . .
 
-CMD ["npm", "run", "test:e2e"]
+RUN npm run build
+
+FROM nginx:alpine
+
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
