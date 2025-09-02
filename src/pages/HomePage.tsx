@@ -1,4 +1,4 @@
-import {PropertyGrid, SearchBar} from "../features/properties";
+import {SearchBar} from "../features/properties";
 import {useAuth} from "../shared/hooks/useAuth";
 import OneSignal from "react-onesignal";
 import {useEffect} from "react";

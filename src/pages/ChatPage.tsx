@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState} from 'react'
 import { useAuthContext } from '../shared/hooks/AuthContext'
 import './ChatPage.css'
 
@@ -17,8 +17,8 @@ function ChatPage() {
     const [messages, setMessages] = useState<Message[]>([]);
     const [messageInput, setMessageInput] = useState('');
     const [roomName, setRoomName] = useState('');
-    const [currentRoom, setCurrentRoom] = useState<string | null>(null);
-    const messageEndRef = useRef<HTMLDivElement>(null);
+    const [, setCurrentRoom] = useState<string | null>(null);
+    // const messageEndRef = useRef<HTMLDivElement>(null);
 
     const connectToWebSocket = () => {
         const userIdValue = user?.profile?.username?.trim();

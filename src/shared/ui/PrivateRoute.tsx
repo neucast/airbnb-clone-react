@@ -1,4 +1,4 @@
-import { useAuthContext } from '../hooks/AuthContext'
+import {useAuthContext} from '../hooks/AuthContext'
 
 interface PrivateRouteProps {
     children: React.ReactNode,
@@ -6,8 +6,9 @@ interface PrivateRouteProps {
     fallback?: React.ReactNode
 }
 
-function PrivateRoute({ children, roles, fallback }: PrivateRouteProps) {
-    const { isAuthenticated, isLoading, login } = useAuthContext()
+// function PrivateRoute({ children, roles, fallback }: PrivateRouteProps) {
+function PrivateRoute({children}: PrivateRouteProps) {
+    const {isAuthenticated, isLoading, login} = useAuthContext()
 
     if (isLoading) {
         return <div>Loading...</div>

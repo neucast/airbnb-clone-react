@@ -309,13 +309,13 @@ function PropertyDetailsPage() {
                 
                 <div className="guests-selector">
                   <label>GUESTS</label>
-                  <select defaultValue={property.guests > 2 ? 2 : 1}>
-                    {Array.from({ length: property.guests }, (_, i) => (
-                      <option key={i + 1} value={i + 1}>
-                        {i + 1} guest{i !== 0 ? 's' : ''}
-                      </option>
-                    ))}
-                  </select>
+                  {/*<select defaultValue={property.guests > 2 ? 2 : 1}>*/}
+                  {/*  {Array.from({ length: property.guests }, (_, i) => (*/}
+                  {/*    <option key={i + 1} value={i + 1}>*/}
+                  {/*      {i + 1} guest{i !== 0 ? 's' : ''}*/}
+                  {/*    </option>*/}
+                  {/*  ))}*/}
+                  {/*</select>*/}
                 </div>
   
                 <button className="reserve-btn">Reserve</button>
