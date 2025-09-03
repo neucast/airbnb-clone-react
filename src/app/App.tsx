@@ -1,11 +1,12 @@
-import { Suspense, lazy } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import {lazy, Suspense} from 'react'
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
 import LoadingSpinner from '../shared/ui/LoadingSpinner'
 import PrivateRoute from '../shared/ui/PrivateRoute'
-import { AuthProvider } from '../shared/hooks/AuthContext'
+import {AuthProvider} from '../shared/hooks/AuthContext'
 import AuthCallback from '../shared/ui/AuthCallback'
 import SilentCallback from '../shared/ui/SilentCallback'
 import ProtectedRoute from "../shared/ui/ProtectedRoute.tsx";
+import AddPropertyPage from "../pages/AddPropertyPage.tsx";
 
 const HomePage = lazy(() => import('../pages/HomePage'))
 const PropertyDetailsPage = lazy(() => import('../pages/PropertyDetailsPage'))
@@ -14,32 +15,33 @@ const ChatPage = lazy(() => import('../pages/ChatPage'))
 const ProfilePage = lazy(() => import('../pages/ProfilePage'))
 
 function App() {
-  return (
-    <AuthProvider>
-      <Router>
-        <Suspense fallback={<LoadingSpinner/>}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/callback" element={<AuthCallback />} />
-            <Route path="/silent-callback" element={<SilentCallback />} />
-            <Route path="/chat" element={
-                <ProtectedRoute>
-                    <ChatPage />
-                </ProtectedRoute>
-            }
-            />
-            <Route path="/property/:id" element={<PropertyDetailsPage />} />
-            <Route path="/profile" element={
-              <PrivateRoute>
-                <ProfilePage/>
-              </PrivateRoute>
-            } />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Suspense>
-      </Router>
-    </AuthProvider>
-  )
+    return (
+        <AuthProvider>
+            <Router>
+                <Suspense fallback={<LoadingSpinner/>}>
+                    <Routes>
+                        <Route path="/" element={<HomePage/>}/>
+                        <Route path="/callback" element={<AuthCallback/>}/>
+                        <Route path="/silent-callback" element={<SilentCallback/>}/>
+                        <Route path="/chat" element={
+                            <ProtectedRoute>
+                                <ChatPage/>
+                            </ProtectedRoute>
+                        }
+                        />
+                        <Route path="/property/:id" element={<PropertyDetailsPage/>}/>
+                        <Route path="/add-property" element={<AddPropertyPage/>}/>
+                        <Route path="/profile" element={
+                            <PrivateRoute>
+                                <ProfilePage/>
+                            </PrivateRoute>
+                        }/>
+                        <Route path="*" element={<NotFoundPage/>}/>
+                    </Routes>
+                </Suspense>
+            </Router>
+        </AuthProvider>
+    )
 }
 
 export default App
